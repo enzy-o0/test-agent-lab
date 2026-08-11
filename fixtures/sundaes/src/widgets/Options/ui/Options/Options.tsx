@@ -41,7 +41,7 @@ export const Options = ({ optionType }: OptionsPropType) => {
         return () => {
             // controller.abort();
         };
-    }, [optionType]);
+    }, [optionType, URL]);
 
     if (error) {
         return <AlertBanner variant="danger" />;

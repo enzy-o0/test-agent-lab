@@ -12,7 +12,6 @@ interface VitestConfigExport extends UserConfig {
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/react-vite-vitest/',
     test: {
         port: 3000,
         environment: 'jsdom',

@@ -10,7 +10,6 @@ import { OrderPhaseComponentPropType, OrderPhaseType } from '@/shared/type/order
 function App() {
     const [orderPhase, setOrderPhase] = React.useState<OrderPhaseType>('inProgress');
 
-    // eslint-disable-next-line no-unused-vars
     let Component: ({ setOrderPhase }: OrderPhaseComponentPropType) => JSX.Element = OrderEntryPage;
 
     switch (orderPhase) {

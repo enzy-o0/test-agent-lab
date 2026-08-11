@@ -13,7 +13,6 @@ test('indicate if scoop count is non-int or out of range', async () => {
     await user.clear(vanillaInput);
     await user.type(vanillaInput, '-1');
 
-    await screen.debug();
     expect(vanillaInput).toHaveClass('is-invalid', {
         exact: false,
     });

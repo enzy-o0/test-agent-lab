@@ -18,7 +18,10 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    "no-unused-vars": "warn", // warning, not error
+    // base 룰은 반드시 꺼야 한다. @typescript-eslint/recommended 가 이미
+    // @typescript-eslint/no-unused-vars 를 켜므로, 켜 두면 같은 위치를 두 번
+    // 보고하고 타입 선언부의 파라미터까지 오탐한다.
+    "no-unused-vars": "off",
     "vitest/expect-expect": "off", // eliminate distracting red squiggles while writing tests
     "react/prop-types": "off", // turn off props validation
   },

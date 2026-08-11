@@ -30,6 +30,9 @@ interface OrderDetailsContextType {
 
 const OrderDetailsContext = React.createContext<OrderDetailsContextType | null>(null);
 
+// 훅과 Provider 를 한 파일에 두는 건 원본 픽스처의 구조 선택이다. 파일을 쪼개면
+// 픽스처가 원본과 달라지므로, HMR DX 경고인 이 룰만 여기서 끈다.
+// eslint-disable-next-line react-refresh/only-export-components
 export function useOrderDetails() {
     const contextValue = React.useContext(OrderDetailsContext);
 
