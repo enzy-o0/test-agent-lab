@@ -8,7 +8,7 @@ import userEvent from '@testing-library/user-event';
 const URL = import.meta.env.API_URL;
 
 test('handles error for scoops and toppings routes', async () => {
-    server.resetHandlers(
+    server.use(
         http.get(`${URL}/scoops`, () => {
             return new HttpResponse(null, {
                 status: 500,
