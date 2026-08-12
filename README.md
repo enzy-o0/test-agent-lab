@@ -117,7 +117,7 @@ Udemy [Jest / Vitest 를 활용한 React 테스팅 라이브러리](https://www.
 | 불필요한 타입 패키지 | `@types/react-router-dom@5` — v6는 타입 내장 | 제거 |
 | dep / devDep 분류 | 테스트 라이브러리 6종이 `dependencies`에 (`@testing-library/*`, `@vitest/ui`, `eslint-plugin-vitest`) | `devDependencies`로 이동 |
 | 죽은 스크립트 | `deploy: gh-pages -d dist` — `gh-pages`가 설치되어 있지 않음 | 제거 |
-| husky | 픽스처의 `prepare: husky install`이 `.git` 부재로 설치를 실패시킴 | 훅은 루트가 소유 |
+| husky | 픽스처의 `prepare: husky install`이 `.git` 부재로 설치를 실패시킴 | 제거 — 현재 커밋 훅은 쓰지 않는다 |
 | 빌드 설정 | `base: '/react-vite-vitest/'` — Pages 배포 경로 | 픽스처는 배포 대상이 아니므로 제거 |
 
 정리 전에는 `npm install`이 exit 1로 끝나 설치 단계부터 재현되지 않았다.
