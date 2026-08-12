@@ -44,7 +44,7 @@ npm run test:coverage
 | 기준선 | 내용 |
 |---|---|
 | [`reports/baseline.md`](reports/baseline.md) | 사람이 쓴 테스트 — 28개, 97.62% |
-| [`reports/baseline-zero.md`](reports/baseline-zero.md) | 테스트 0개 — 분모 631 statement / 25 파일 |
+| [`reports/baseline-zero.md`](reports/baseline-zero.md) | 테스트를 전부 지운 출발점 — 0%, 대상 코드 25개 파일 · 631줄 |
 
 ## 구조
 
@@ -138,7 +138,7 @@ Udemy [Jest / Vitest 를 활용한 React 테스팅 라이브러리](https://www.
 ## 로드맵
 
 - [x] **0** — 픽스처 이관, 재현 가능한 측정 확보, CI, [베이스라인 측정](reports/baseline.md)
-- [x] **1** — 기존 테스트 전량 제거 → [0% 기준점](reports/baseline-zero.md) (분모 확정 · 하네스 제약 3건)
+- [x] **1** — 기존 테스트 전량 제거 → [출발점 측정](reports/baseline-zero.md), 에이전트 결과를 비교할 기준값 확보
 - [ ] **2** — `agent/generate.ts` — 커버리지 갭을 읽고 테스트 작성
 - [ ] **3** — Stryker 도입, 뮤테이션 스코어 측정 · *커버리지와의 간극이 여기서 드러난다*
 - [ ] **4** — `agent/critique.ts` — 살아남은 뮤턴트를 근거로 테스트 재작성
