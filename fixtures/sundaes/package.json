@@ -14,7 +14,8 @@
         "test:coverage": "vitest run --coverage",
         "cypress:open": "cypress open",
         "cypress:run": "cypress run",
-        "test:e2e": "start-server-and-test start http://localhost:5173 cypress:run"
+        "test:e2e": "start-server-and-test start http://localhost:5173 cypress:run",
+        "test:mutation": "stryker run"
     },
     "dependencies": {
         "axios": "^1.6.5",
@@ -25,6 +26,8 @@
         "react-router-dom": "^6.21.2"
     },
     "devDependencies": {
+        "@stryker-mutator/core": "^8.2.6",
+        "@stryker-mutator/vitest-runner": "^8.2.6",
         "@testing-library/jest-dom": "^6.2.0",
         "@testing-library/react": "^14.1.2",
         "@testing-library/user-event": "^14.5.2",

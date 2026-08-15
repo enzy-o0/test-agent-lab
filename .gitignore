@@ -32,3 +32,6 @@ pnpm-debug.log*
 .env
 .env.local
 !.env.example
+
+# 뮤테이션 원본 덤프 — 요약 숫자는 reports/*.md 에 남긴다
+reports/mutation/mutation.json
