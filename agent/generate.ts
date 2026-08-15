@@ -42,6 +42,19 @@ function resolveInsideFixtureSrc(candidate: string): string {
     return absolute;
 }
 
+/**
+ * 테스트 실행 프로세스에 넘길 환경변수에서 자격증명을 뺀다. 픽스처 테스트는
+ * API 키가 필요 없고, 에이전트가 쓴 코드가 실행되는 프로세스이므로 줄 이유도 없다.
+ */
+function withoutCredentials(env: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
+    const cleaned: NodeJS.ProcessEnv = {};
+    for (const [key, value] of Object.entries(env)) {
+        if (/^(ANTHROPIC_|AWS_|GITHUB_|GH_|OPENAI_|NPM_TOKEN)/.test(key)) continue;
+        cleaned[key] = value;
+    }
+    return cleaned;
+}
+
 function truncate(text: string): string {
     if (text.length <= MAX_TEST_OUTPUT_CHARS) return text;
     return `${text.slice(0, MAX_TEST_OUTPUT_CHARS)}\n…(출력이 잘렸습니다)`;
@@ -187,7 +200,15 @@ async function main(): Promise<void> {
                 const { stdout, stderr } = await execFileAsync(
                     'npx',
                     ['vitest', 'run', target, '--reporter=verbose'],
-                    { cwd: FIXTURE_ROOT, timeout: 180_000, maxBuffer: 20 * 1024 * 1024 },
+                    {
+                        cwd: FIXTURE_ROOT,
+                        timeout: 180_000,
+                        maxBuffer: 20 * 1024 * 1024,
+                        // vitest 는 에이전트가 방금 쓴 코드를 Node 권한으로 실행한다.
+                        // 경로 가드는 파일이 어디 놓이는지를 막지, 실행될 때 무엇을
+                        // 하는지는 막지 못한다. 최소한 자격증명은 손이 닿지 않게 뺀다.
+                        env: withoutCredentials(process.env),
+                    },
                 );
                 return truncate(`통과 (exit 0)\n\n${stdout}\n${stderr}`);
             } catch (error) {

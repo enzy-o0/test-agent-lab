@@ -4,7 +4,7 @@
     "type": "module",
     "description": "에이전트에게 테스트를 쓰게 하고, 그 테스트가 실제로 버그를 잡는지 측정한다",
     "scripts": {
-        "generate": "tsx agent/generate.ts",
+        "generate": "tsx --env-file-if-exists=.env agent/generate.ts",
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
